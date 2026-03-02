@@ -96,4 +96,6 @@ DELETE  /api/clientes/{id}         Eliminar un cliente
 - Diseño dark mode con gradientes y animaciones
 
 ## Colección Postman
-Importar el archivo Clientes.postman_collection.json incluido en la carpeta backend/ClientesApi para tener todos los endpoints listos para probar.
+
+Importar el archivo Clientes.postman_collection.json que se encuentra en la raíz del repositorio
+para tener todos los endpoints listos para probar.
