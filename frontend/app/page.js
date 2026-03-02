@@ -201,7 +201,12 @@ return (
           }}
         />
       </div>
-
+      {busqueda && (
+            <p style={{ color: '#7c6faa', fontSize: '0.85rem', marginBottom: '1rem', marginTop: '-1rem' }}>
+                {filtrados.length} resultado{filtrados.length !== 1 ? 's' : ''} para "{busqueda}"
+            </p>
+        )}
+ 
       {/* Sin resultados */}
       {filtrados.length === 0 ? (
         <div style={{ textAlign: 'center', paddingTop: '5rem', color: '#a78bfa' }}>
