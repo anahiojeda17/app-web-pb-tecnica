@@ -12,6 +12,8 @@ export default function Home() {
   const [error, setError] = useState(null)
   const [expandido, setExpandido] = useState(null)
   const [confirmId, setConfirmId] = useState(null)
+  const [exito, setExito] = useState('')
+
 
   useEffect(() => {
     fetch(API)
@@ -34,9 +36,11 @@ export default function Home() {
     await fetch(`${API}/${confirmId}`, { method: 'DELETE' })
     setClientes(clientes.filter(c => c.id !== confirmId))
     setConfirmId(null)
+    setExito('✅ Cliente eliminado correctamente')
+    setTimeout(() => setExito(''), 3000)
     }
 
-  const filtrados = clientes.filter(c =>
+    const filtrados = clientes.filter(c =>
     c.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
     c.email.toLowerCase().includes(busqueda.toLowerCase())
   )
@@ -102,6 +106,26 @@ return (
       .fila:hover { background: rgba(167,139,250,0.08) !important; }
       .fila-detalle { animation: fadeIn 0.25s ease; }
     `}</style>
+     {exito && (
+        <div style={{
+            position: 'fixed',
+            top: '1.5rem',
+            right: '1.5rem',
+            background: 'rgba(34,197,94,0.15)',
+            border: '1px solid rgba(74,222,128,0.4)',
+            color: '#4ade80',
+            padding: '0.9rem 1.5rem',
+            borderRadius: '10px',
+            fontWeight: '600',
+            fontSize: '0.95rem',
+            zIndex: 1000,
+            backdropFilter: 'blur(8px)',
+            boxShadow: '0 8px 25px rgba(0,0,0,0.3)',
+            animation: 'fadeIn 0.3s ease',
+        }}>
+            {exito}
+        </div>
+    )}
 
     <div style={{ maxWidth: '900px', margin: '0 auto' }}>
 
