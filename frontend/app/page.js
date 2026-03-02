@@ -32,6 +32,15 @@ export default function Home() {
     setConfirmId(id)
     }
 
+    useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('exito')) {
+            setExito('✅ Cliente guardado correctamente')
+            setTimeout(() => setExito(''), 3000)
+            window.history.replaceState({}, '', '/')
+    }
+    }, [])
+    
     const confirmarEliminar = async () => {
     await fetch(`${API}/${confirmId}`, { method: 'DELETE' })
     setClientes(clientes.filter(c => c.id !== confirmId))
