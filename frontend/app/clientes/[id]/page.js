@@ -19,11 +19,25 @@ export default function EditarCliente() {
   }, [id])
 
   if (loading) return (
-    <div className="flex items-center justify-center min-h-screen">
-        <div className="flex flex-col items-center gap-3">
-        <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-gray-500 text-sm">Cargando...</p>
-        </div>
+    <div style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        gap: '1rem'
+    }}>
+        <div style={{
+        width: '48px',
+        height: '48px',
+        border: '4px solid #a78bfa',
+        borderTopColor: 'transparent',
+        borderRadius: '50%',
+        animation: 'spin 0.8s linear infinite'
+        }} />
+        <p style={{ color: '#a78bfa', fontSize: '0.95rem' }}>Cargando cliente...</p>
+        <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
     </div>
     )
 

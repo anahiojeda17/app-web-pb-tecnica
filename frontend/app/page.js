@@ -34,13 +34,20 @@ export default function Home() {
 
     useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    if (params.get('exito')) {
-            setExito('✅ Cliente guardado correctamente')
-            setTimeout(() => setExito(''), 3000)
-            window.history.replaceState({}, '', '/')
+    const tipo = params.get('exito')
+    if (tipo === 'creado') {
+
+        setExito('✅ Cliente creado correctamente')
+        setTimeout(() => setExito(''), 3000)
+        window.history.replaceState({}, '', '/')
+
+    } else if (tipo === 'actualizado') {
+        setExito('✅ Cliente actualizado correctamente')
+        setTimeout(() => setExito(''), 3000)
+        window.history.replaceState({}, '', '/')
     }
     }, [])
-    
+    /////////
     const confirmarEliminar = async () => {
     await fetch(`${API}/${confirmId}`, { method: 'DELETE' })
     setClientes(clientes.filter(c => c.id !== confirmId))

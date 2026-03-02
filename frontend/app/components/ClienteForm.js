@@ -35,7 +35,8 @@ export default function ClienteForm({ clienteInicial, id }) {
     })
 
     if (res.ok) {
-        router.push('/?exito=true')
+        router.push('/?exito=' + (id ? 'actualizado' : 'creado'))
+
     } else {
       const data = await res.json()
       setErrores(Array.isArray(data) ? data : ['Error al guardar'])
