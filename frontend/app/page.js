@@ -132,26 +132,53 @@ return (
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2.5rem' }}>
         <div>
-          <h1 style={{ color: '#fff', fontSize: '2.2rem', fontWeight: '800', margin: 0 }}>👥 Clientes</h1>
-          <p style={{ color: '#a78bfa', marginTop: '0.4rem', fontSize: '0.95rem' }}>{clientes.length} clientes registrados</p>
+            <h1 style={{ color: '#fff', fontSize: '2.2rem', fontWeight: '800', margin: 0 }}>👥 Clientes</h1>
+            <p style={{ color: '#a78bfa', marginTop: '0.4rem', fontSize: '0.95rem' }}>{clientes.length} clientes registrados</p>
+            
+            {/* Contador activos / inactivos */}
+            <div style={{ display: 'flex', gap: '1rem', marginTop: '0.75rem' }}>
+            <span style={{
+                padding: '0.25rem 0.85rem',
+                borderRadius: '999px',
+                fontSize: '0.78rem',
+                fontWeight: '700',
+                background: 'rgba(34,197,94,0.15)',
+                color: '#4ade80',
+                border: '1px solid rgba(74,222,128,0.3)',
+            }}>
+                ● {clientes.filter(c => c.estado === 'activo').length} activos
+            </span>
+            <span style={{
+                padding: '0.25rem 0.85rem',
+                borderRadius: '999px',
+                fontSize: '0.78rem',
+                fontWeight: '700',
+                background: 'rgba(239,68,68,0.15)',
+                color: '#f87171',
+                border: '1px solid rgba(248,113,113,0.3)',
+            }}>
+                ● {clientes.filter(c => c.estado === 'inactivo').length} inactivos
+            </span>
+            </div>
         </div>
+
         <Link href="/clientes/nuevo" style={{
-          background: 'linear-gradient(135deg, #7c3aed, #a78bfa)',
-          color: '#fff',
-          padding: '0.75rem 1.5rem',
-          borderRadius: '10px',
-          textDecoration: 'none',
-          fontWeight: '700',
-          fontSize: '0.95rem',
-          boxShadow: '0 4px 15px rgba(124,58,237,0.4)',
-          transition: 'transform 0.15s',
+            background: 'linear-gradient(135deg, #7c3aed, #a78bfa)',
+            color: '#fff',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '10px',
+            textDecoration: 'none',
+            fontWeight: '700',
+            fontSize: '0.95rem',
+            boxShadow: '0 4px 15px rgba(124,58,237,0.4)',
+            transition: 'transform 0.15s',
         }}
-          onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
-          onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+            onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+            onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
         >
-          + Nuevo cliente
+            + Nuevo cliente
         </Link>
-      </div>
+        </div>
 
       {/* Buscador */}
       <div style={{ position: 'relative', marginBottom: '2rem' }}>
